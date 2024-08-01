@@ -208,6 +208,25 @@
                         }
                     }
                 }
+                &.location{
+                    section{
+                        &.s01{
+                            padding: 80px 0 180px;
+                            article{
+                                .wrap{
+                                    .info{
+                                        .logo{
+                                            width: 200px;
+                                        }
+                                        ul{
+                                            margin-right: 100px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -460,6 +479,27 @@
                         }
                     }
                 }
+                &.location{
+                    section{
+                        &.s01{
+                            padding: 60px 0 160px;
+                            article{
+                                .wrap{
+                                    .info{
+                                        margin-top: 40px;
+                                        flex-wrap: wrap;
+                                        .logo{
+                                            width: 180px;
+                                        }
+                                        ul{
+                                            margin-right: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -571,6 +611,27 @@
                                                 //     margin: 10px 0 20px;
                                                 // }
                                             }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.location{
+                    section{
+                        &.s01{
+                            padding: 60px 0 140px;
+                            article{
+                                .wrap{
+                                    .map{
+                                        min-height: 350px;
+                                        border-radius: 20px;
+                                    }
+                                    .info{
+                                        margin-top: 30px;
+                                        .logo{
+                                            width: 160px;
                                         }
                                     }
                                 }
@@ -724,6 +785,32 @@
                         }
                         &.s04{
                             padding: 50px 0;
+                        }
+                    }
+                }
+                &.location{
+                    section{
+                        &.s01{
+                            padding: 40px 0 100px;
+                            article{
+                                .wrap{
+                                    .map{
+                                        min-height: 300px;
+                                        border-radius: 10px;
+                                    }
+                                    .info{
+                                        margin-top: 20px;
+                                        .logo{
+                                            width: 150px;
+                                        }
+                                        ul{
+                                            li{
+                                                gap: 10px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

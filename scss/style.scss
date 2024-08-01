@@ -751,6 +751,70 @@ main {
                     }
                 }
             }
+            &.history{
+
+            }
+            &.location{
+                section{
+                    &.s01{
+                        padding: 100px 0 200px;
+                        article{
+                            .wrap{
+                                .map{
+                                    width: 100%;
+                                    aspect-ratio: 1460/530;
+                                    border-radius: 30px;
+                                    overflow: hidden;
+                                    min-height: 400px;
+                                    iframe{
+                                        @include fullsize;
+                                    }
+                                }
+                                .info{
+                                    margin-top: 60px;
+                                    @include flex-space-start;
+                                    gap: 30px;
+                                    .logo{
+                                        width: 227px;
+                                        img{
+                                            width: 100%;
+                                            object-fit: contain;
+                                        }
+                                    }
+                                    ul{
+                                        width: 500px;
+                                        margin-right: 150px;
+                                        li{
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: flex-start;
+                                            font-size: 14px;
+                                            font-weight: 500;
+                                            gap: 20px;
+                                            margin-bottom: 10px;
+                                            line-height: 1.7;
+                                            .icon{
+                                                max-height: 18px;
+                                            }
+                                            p{
+                                                width: 100%;
+                                                display: flex;
+                                                justify-content: flex-start;
+                                                align-items: center;
+                                                flex-wrap: wrap;
+                                                gap: 5px;
+                                            }
+                                            &:nth-last-of-type(1){
+                                                margin-bottom: 0
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
