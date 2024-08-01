@@ -1,0 +1,760 @@
+@import "../font/font.css";
+@import "./function";
+@import "./swiper";
+
+$innerWidth: 1460px;
+@import "./gnb";
+
+main {
+    &#main_page {
+        section {
+            width: 100%;
+            &:not(.s01){
+                padding: 100px 0;
+                article{
+                    @include inner-center($innerWidth);
+                    .wrap{
+                        width: 100%;
+                    }
+                }
+                .title{
+                    h3{
+                        font-size: 40px;
+                        font-weight: 800;
+                        @include flex-column;
+                        span{
+                            color: #2852E5;
+                            font-size: 14px;
+                            font-weight: 700;
+                            margin-bottom: 10px;
+                        }
+                    }
+                    p{
+                        font-size: 18px;
+                        font-weight: 500;
+                        margin-top: 20px;
+                    }
+                    a{
+                        display: inline-block;
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: #Fff;
+                        background-color: #000;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        margin-top: 50px;
+                    }
+                }
+            }
+            &.s01{
+                width: 100%;
+                height: 100vh;
+                article{
+                    @include fullsize;
+                    .wrap{
+                        @include fullsize;
+                        .swiper{
+                            @include fullsize;
+                            .swiper-wrapper{
+                                @include fullsize;
+                                .swiper-slide{
+                                    @include fullsize;
+                                    position: relative;
+                                    @include flex-center;
+                                    .bg{
+                                        @include fullsize;
+                                        position: absolute;
+                                        z-index: 2;
+                                        top: 0;
+                                        left: 0;
+                                        @include all-cover;
+                                        @include drag-off;
+                                    }
+                                    .title{
+                                        position: relative;
+                                        z-index: 3;
+                                        color: #fff;
+                                        @include inner-center($innerWidth);
+                                        padding-left: 600px;
+                                        h2{
+                                            font-size: 64px;
+                                            font-weight: 800;
+                                            line-height: 1.3;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.s02{
+                background-color: #FAFAFA;
+                article{
+                    .wrap{
+                        ul{
+                            width: 100%;
+                            height: 530px;
+                            @include flex-center;
+                            border-radius: 50px;
+                            overflow: hidden;
+                            margin-bottom: 80px;
+                            li{
+                                width: 100%;
+                                height: 100%;
+                                position: relative;
+                                @include flex-center;
+                                @include transition(.5s);
+                                .bg{
+                                    @include fullsize;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    z-index: 1;
+                                    img{
+                                        @include img-cover;
+                                    }
+                                }
+                                .text{
+                                    position: relative;
+                                    z-index: 2;
+                                    color: #Fff;
+                                    text-align: center;
+                                    @include flex-column-center;
+                                    p{
+                                        font-size: 32px;
+                                        font-weight: 800;
+                                        @include transition(.5s);
+                                        position: relative;
+                                        padding-bottom: 0;
+                                    }
+                                    span{
+                                        font-size: 20px;
+                                        font-weight: 700;
+                                        position: absolute;
+                                        @include pos-x-center;
+                                        white-space: nowrap;
+                                        bottom: -80px;
+                                        opacity: 0;
+                                        @include transition(.5s);
+                                        &:before{
+                                            content: "";
+                                            position: absolute;
+                                            top: -28px;
+                                            @include pos-x-center;
+                                            width: 6px;
+                                            height: 6px;
+                                            border-radius: 50%;
+                                            background-color: #fff;
+                                            opacity: 0;
+                                            @include transition(.5s);
+                                        }
+
+                                    }
+                                }
+                                &::before{
+                                    content: "";
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    opacity: 0;
+                                    background-color: #000;
+                                    @include transition(.5s);
+                                    @include fullsize;
+                                    @include drag-off;
+                                    z-index: 2;
+                                }
+                                &:hover{
+                                    width: 250%;
+                                    p{
+                                        font-size: 48px;
+                                        padding-bottom: 150px;
+                                    }
+                                    span{
+                                        opacity: 1;
+                                        bottom: 0;
+                                        &::before{
+                                            opacity: 1;
+                                        }
+
+                                    }
+                                    &::before{
+                                        opacity: .6;
+                                    }
+
+                                }
+                            }
+                        }
+                        .title{
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            gap: 120px;
+                            p{
+                                margin-top: 28px;
+                            }
+                        }
+                    }
+                }
+            }
+            &.s03{
+
+            }
+            &.s04{
+                article{
+                    position: relative;
+                    .wrap{
+                        @include flex-start;
+                        gap: 130px;
+                        position: relative;
+                        canvas{
+                            // width: 580px;
+                            // height: 580px;
+                            position: absolute;
+                            top: -350px;
+                            left: -240px;
+                        }
+                        .img-wrap{
+                            width: 730px;
+                            aspect-ratio: 730/1000;
+                            border-radius: 50px;
+                            overflow: hidden;
+                            position: relative;
+                            z-index: 3;
+                            img{
+                                @include img-cover;
+                            }
+                        }
+                        .title{
+                            margin-top: 180px;
+                        }
+                    }
+                    .bg{
+                        width: 610px;
+                        aspect-ratio: 600/588;
+                        position: absolute;
+                        right: -220px;
+                        bottom: -140px;
+                        img{
+                            @include img-cover;
+                        }
+                    }
+                }
+            }
+
+            &.s05{
+                padding: 0;
+                article{
+                    max-width: 100%;
+                    .wrap{
+                        display: flex;
+                        height: 1000px;
+                        .location{
+                            @include fullsize;
+                            border-radius: 0 50px 0 0;
+                            overflow: hidden;
+                            iframe{
+                                @include fullsize;
+                            }
+                        }
+                        .right{
+                            @include fullsize;
+                            @include flex-column-center;
+                            border-radius: 50px 0 0 0;
+                            background-color: #FAFAFA;
+                            >div{
+                                @include fullsize;
+                                border-radius: 50px 0 0 0;
+                                padding: 80px;
+                                &.ir{
+                                    position: relative;
+                                    .title{
+                                        display: flex;
+                                        justify-content: flex-start;
+                                        align-items: center;
+                                        gap: 60px;
+                                        p{
+                                            margin-top: 0;
+                                        }
+                                    }
+                                    .list{
+                                        margin: 80px 0 0 100px;
+                                        li{
+                                            font-size: 16px;
+                                            display: flex;
+                                            gap: 40px;
+                                            margin-bottom: 20px;
+                                            span{
+                                                font-weight: 700;
+                                            }
+                                            .tit{
+                                                width: 100%;
+                                                @include flex-space-center;
+                                                a{
+                                                    font-weight: 500;
+                                                }
+                                            }
+                                            &:last-child{
+                                                margin-bottom: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.contact{
+                                    @include bg-cover("../images/main/s05_02.png");
+                                    color: #fff;
+                                    .title{
+                                        a{
+                                            background-color: transparent;
+                                            border-radius: 10px;
+                                            padding: 20px 40px;
+                                            border: 1px solid #fff;
+                                            font-size: 14px;
+                                            font-weight: 500;
+                                        }                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+
+
+    &#sub_page {
+        section{
+            width: 100%;
+            article{
+                width: 100%;
+                @include inner-center($innerWidth);
+                .wrap{
+                    width: 100%;
+                }
+            } 
+        }
+        .sub_main{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            @include flex-center;
+            overflow: hidden;
+            .bg{
+                @include fullsize;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 2;
+                @include drag-off;
+                @include all-cover;
+                animation: zoom-in 5s forwards;
+            }
+            .title{
+                color: #Fff;
+                position: relative;
+                // top: 120px;
+                z-index: 3;
+                h2{
+                    font-size: 64px;
+                    font-weight: 800;
+                    opacity: 0;
+                    animation: fade-up 1s .5s forwards;
+                }
+                ul{
+                    position: absolute;
+                    bottom: -40px;
+                    @include pos-x-center;
+                    font-size: 14px;
+                    font-weight: 500;
+                    @include flex-center;
+                    gap: 23px;
+                    white-space: nowrap;
+                    li{
+                        position: relative;
+                        opacity: 0;
+                        animation: fade-up 1s .8s forwards;
+                        &::before{
+                            content: "";
+                            width: 3px;
+                            height: 3px;
+                            border-radius: 50%;
+                            background-color: #fff;
+                            position: absolute;
+                            @include pos-y-center;
+                            left: -13px;
+                        }
+                        &:first-child{
+                            &::before{
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .page_arrow{
+                position: absolute;
+                bottom: 5vw;
+                @include pos-x-center;
+                z-index: 3;
+                img{
+                    display: inline-block;
+                    animation: down-up 1.5s 3s infinite;
+                }
+            }
+        }
+        &.about{
+            &.ceo{
+                section{
+                    overflow: hidden;
+                    &.s01{
+                        padding: 100px 0 150px;
+                        position: relative;
+                        article{
+                            .wrap{
+                                @include flex-center;
+                                gap: 140px;
+                                .img-wrap{
+                                    width: 597px;
+                                    aspect-ratio: 597/900;
+                                    border-radius: 50px;
+                                    overflow: hidden;
+                                    img{
+                                        @include img-cover;
+                                    }
+                                }
+                                .info{
+                                    .title{
+                                        margin-bottom: 80px;
+                                        h3{
+                                            @include fs-56;
+                                            font-weight: 800;
+                                            margin-bottom: 20px;
+                                        }
+                                        p{
+                                            font-size: 26px;
+                                            font-weight: 500;
+                                            span{
+                                                color: #2852E6;
+                                                font-weight: 700;
+                                            }
+                                        }
+                                    }
+                                    .text{
+                                        font-size: 16px;
+                                        color: #606060;
+                                        font-weight: 500;
+                                        line-height: 1.7
+                                    }
+                                    .sign{
+                                        font-size: 20px;
+                                        font-weight: 700;
+                                        line-height: 1.5;
+                                        span{
+                                            font-size: 14px;
+                                            font-weight: 500;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .bg{
+                            width: 110%;
+                            position: absolute;
+                            bottom: -20vw;
+                            @include pos-x-center;
+                            @include drag-off;
+                            img{
+                                width: 100%;
+                                object-fit: contain
+                            }
+                        }
+                    }
+                }
+            }
+            &.bsp{
+                section{
+                    &.s01,&.s03{
+                        .title{
+                            width: 100%;
+                            @include fs-56;
+                            font-weight: 800;
+                            letter-spacing: -2px;
+                            margin-bottom: 100px;
+                            >div{
+                                width: 100%;
+                                @include flex-space-center;
+                                gap: 60px;
+                                white-space: nowrap;
+                                .img-wrap{
+                                    width: 100%;
+                                    border-radius: 100px;
+                                    height: 100px;
+                                    overflow: hidden;
+                                    img{
+                                        @include img-cover;
+                                        object-position: center 50%;
+                                    }
+                                }
+                            }
+                            .top{
+                                margin-bottom: 20px;
+                            }
+                        }
+                        .text{
+                            font-size: 16px;
+                            color: #606060;
+                            margin-left: 700px;
+                            font-weight: 500;
+                            line-height: 1.7;
+                            strong{
+                                color: #000;
+                                font-weight: 800;
+                            }
+                        }
+                    }
+                    &.s01{
+                        padding: 100px 0 140px;
+                    }
+                    &.s02{
+                        article{
+                            .wrap{
+                                position: relative;
+                                .swiper{
+                                    width: 100%;
+                                    height: 600px;
+                                    .swiper-wrapper{
+                                        @include fullsize;
+                                        .swiper-slide{
+                                            @include fullsize;
+                                            border-radius: 50px;
+                                            position: relative;
+                                            padding: 100px 120px;
+                                            overflow: hidden;
+                                            .bg{
+                                                @include fullsize;
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                z-index: 2;
+                                                @include drag-off;
+                                                img{
+                                                    @include img-cover;
+                                                }
+                                            }
+                                            .text{
+                                                position: relative;
+                                                z-index: 3;
+                                                color: #Fff;
+                                                h3{
+                                                    font-size: 42px;
+                                                    font-weight: 800;
+                                                    margin-bottom: 40px;
+                                                }
+                                                ul{
+                                                    font-size: 17px;
+                                                    font-weight: 500;
+                                                    @include flex-list;
+                                                    gap: 10px 25px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .pagi_navi{
+                                    width: 100%;
+                                    padding: 0 120px;
+                                    position: absolute;
+                                    bottom: 30px;
+                                    @include pos-x-center;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: flex-end;
+                                    z-index: 4;
+                                    gap: 20px;
+                                    li{
+                                        width: 100%;
+                                        cursor: pointer;
+                                        .text{
+                                            @include flex-center;
+                                            gap: 10px;
+                                            margin-bottom: 15px;
+                                            .num{
+                                                @include flex-center;
+                                                position: relative;
+                                                svg{
+                                                    --progress: 0;
+                                                    position: relative;
+                                                    z-index: 2;
+                                                    stroke-width: 1px;
+                                                    height: 20px;
+                                                    stroke: #fff;
+                                                    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+                                                    stroke-dasharray: 125.6;
+                                                    fill: none;
+                                                }
+                                                span{
+                                                    z-index: 3;
+                                                    position: absolute;
+                                                    @include pos-center;
+                                                    font-size: 10px;
+                                                    font-weight: 700;
+                                                    color: #fff;
+                                                    @include transition(.5s);
+                                                }
+                                            }
+                                            p{
+                                                color: #fff;
+                                                font-size: 15px;
+                                                font-weight: 700;
+                                                @include transition(.5s);
+                                            }
+                                        }
+                                        .bar{
+                                            width: 100%;
+                                            height: 1px;
+                                            background-color: #Fff;
+                                            .line{
+                                                width: 0%;
+                                                height: 1px;
+                                                background-color: #2852E5;
+                                            }
+                                        }
+                                        &.first{
+                                            .text{
+                                                .num{
+                                                    span{
+                                                        color: #2852E5;
+                                                    }
+                                                }
+                                                p{
+                                                    color: #2852E5;
+                                                }
+                                            }
+                                            .bar{
+                                                .line{
+                                                    animation: 5s bar-start linear;
+                                                }
+                                            }
+                                        }
+                                        &.active{
+                                            .text{
+                                                .num{
+                                                    span{
+                                                        color: #2852E5;
+                                                    }
+                                                }
+                                                p{
+                                                    color: #2852E5;
+                                                }
+                                            }
+                                            .bar{
+                                                .line{
+                                                    animation: 6s bar-start linear;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.s03{
+                        padding: 180px 0 140px;
+                    }
+                    &.s04{
+                        padding: 100px 0;
+                        background-color: #FAFAFA;
+                        article{
+                            .wrap{
+                                ul{
+                                    width: 100%;
+                                    @include flex-center;
+                                    gap: 20px;
+                                    li{
+                                        width: 100%;
+                                        height: 480px;
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: space-between;
+                                        align-items: flex-start;
+                                        padding: 60px 50px;
+                                        border: 1px solid #d9d9d9;
+                                        border-radius: 30px;
+                                        background-color: #fff;
+                                        .img-wrap{
+                                            height: 122px;
+                                            margin-bottom: 60px;
+                                        }
+                                        .text{
+                                            @include flex-column-center;
+                                            >*{
+                                                width: 100%;
+                                            }
+                                            p{
+                                                font-size: 28px;
+                                                font-weight: 700;
+                                                color: #2852E5;
+                                            }
+                                            strong,span{
+                                                font-size: 16px;
+                                                color: #606060;
+                                                letter-spacing: -1px;
+                                            }
+                                            strong{
+                                                font-weight: 700;
+                                                margin: 15px 0 30px;
+                                            }
+                                            span{
+                                                font-weight: 500;
+                                                line-height: 1.7
+                                            }
+                                        }
+                                        &:nth-of-type(1){
+                                            .img-wrap{
+                                                svg{
+                                                    animation: baund 1s 0s infinite;
+                                                }
+                                            }
+
+                                        }
+                                        &:nth-of-type(2){
+                                            .img-wrap{
+                                                svg{
+                                                    animation: rotate 5s 0s linear infinite;
+                                                }
+                                            }
+                                        }
+                                        &:nth-of-type(3){
+                                            .img-wrap{
+                                                svg{
+                                                    circle{
+                                                        &:nth-of-type(1),
+                                                        &:nth-of-type(2){
+                                                            animation: test2 3s 0s linear infinite;
+                                                        }
+
+                                                        &:nth-of-type(3),
+                                                        &:nth-of-type(4){
+                                                            animation: test 3s 0s linear infinite;
+                                                        }
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@import "./media";
