@@ -33,18 +33,30 @@ window.addEventListener("DOMContentLoaded",function(){
         }
     });
 
-
-    window.addEventListener("scroll", () => {
-        scrollY = window.scrollY;
-        if (window.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
-        let scrollTop = window.scrollY;
-        if (scrollTop > lastScroll) {
-            header.classList.remove("active");
-        } else {
-            header.classList.add("active");
-        }
-        lastScroll = scrollTop;
-    });
+    if(document.querySelector(".category_wrap")){
+        $(".category_wrap>span").off("click").click(function(e){
+            if(window.innerWidth < 1024 && $(this).siblings()){
+                $(this).toggleClass("active");
+                $(this).siblings().stop().slideToggle();
+            }
+        });
+        window.addEventListener("resize", function(e) {
+            if (window.innerWidth > 1024) {
+                document.querySelector(".category_wrap .category").style = "";
+            }
+        });
+    }
+    // window.addEventListener("scroll", () => {
+    //     scrollY = window.scrollY;
+    //     if (window.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
+    //     let scrollTop = window.scrollY;
+    //     if (scrollTop > lastScroll) {
+    //         header.classList.remove("active");
+    //     } else {
+    //         header.classList.add("active");
+    //     }
+    //     lastScroll = scrollTop;
+    // });
 
     if(url == "main"){
         var main_slide = new Swiper(".main_slide", {
@@ -56,6 +68,17 @@ window.addEventListener("DOMContentLoaded",function(){
             speed: 1000,
         });
     }
+
+    var rnd_slide = new Swiper(".rnd_slide", {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+    });
+
+    document.querySelectorAll(".rnd_slide").forEach(function(el,index){
+        el.addEventListener("click",function(){
+            rnd_slide.slideNext();
+        });
+    });
 
     document.querySelector(".page_arrow").addEventListener("click",function(e){
         e.preventDefault();
@@ -76,6 +99,7 @@ function copytext(elementName){
         });
     });    
 };
+
 
 
 
