@@ -429,6 +429,16 @@
     }
   }
 
+  @keyframes svg_on {
+    0%{
+        stroke-dashoffset: 140;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+
+
 /* ================================ COMMON ================================ */
 *,
 *:before,
@@ -530,7 +540,7 @@ input[type="checkbox"] {
 
     &:checked {
         border-color: transparent;
-        background-image: url("../images/common/input_check.png");
+        background-image: url("../images/common/input_check.svg");
     }
 }
 

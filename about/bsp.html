@@ -97,7 +97,8 @@ include_once "../include/header.html"
                         <div class="text">
                             <div class="num">
                                 <svg viewBox="0 0 48 48">
-                                    <circle cx="24" cy="24" r="20"></circle>
+                                    <circle cx="24" cy="24" r="22" class="frame"></circle>
+                                    <circle cx="24" cy="24" r="22" class="bar"></circle>
                                 </svg>
                                 <span>1</span>
                             </div>
@@ -111,7 +112,8 @@ include_once "../include/header.html"
                         <div class="text">
                             <div class="num">
                                 <svg viewBox="0 0 48 48">
-                                    <circle cx="24" cy="24" r="20"></circle>
+                                    <circle cx="24" cy="24" r="22" class="frame"></circle>
+                                    <circle cx="24" cy="24" r="22" class="bar"></circle>
                                 </svg>
                                 <span>2</span>
                             </div>
@@ -125,7 +127,8 @@ include_once "../include/header.html"
                         <div class="text">
                             <div class="num">
                                 <svg viewBox="0 0 48 48">
-                                    <circle cx="24" cy="24" r="20"></circle>
+                                    <circle cx="24" cy="24" r="22" class="frame"></circle>
+                                    <circle cx="24" cy="24" r="22" class="bar"></circle>
                                 </svg>
                                 <span>3</span>
                             </div>
@@ -239,20 +242,17 @@ include_once "../include/footer.html"
         },
         speed: 1000,
         on: {
-            autoplayTimeLeft(s, time, progress) {
-                progressCircle[0].style.setProperty("--progress", 1 - progress);
-            },
             slideChange: function(el) {
                 if (first == 0) {
                     pagi_navi[this.realIndex].classList.add("first");
                     first++;
-                }else{
+                } else {
                     let c = document.querySelector(".bsp .pagi_navi");
                     c.querySelector(".first") && c.querySelector("li.first").classList.remove("first");
                     c.querySelector(".active") && c.querySelector("li.active").classList.remove("active");
                     pagi_navi[this.realIndex].classList.add("active");
                 }
-                
+
             }
         }
     });

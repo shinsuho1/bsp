@@ -57,7 +57,6 @@ window.addEventListener("DOMContentLoaded",function(){
     //     }
     //     lastScroll = scrollTop;
     // });
-
     if(url == "main"){
         var main_slide = new Swiper(".main_slide", {
             effect: "fade",
@@ -67,6 +66,23 @@ window.addEventListener("DOMContentLoaded",function(){
             },
             speed: 1000,
         });
+        var main_s03_slide = new Swiper("#main_page .s03 .swiper", {
+            direction: "vertical",
+            loop: true,
+            autoplay: {
+                delay: 8000,
+            },
+            speed: 1000,
+            autoHeight: true,
+            on:{
+                slideChange: function(el) {
+                    let img_slide = document.querySelector(".s03 .img_slide");
+                    console.log(this.realIndex)
+                    img_slide.querySelector(".center img").src = `../images/main/s03_0${this.realIndex}.png`;
+                }
+            }
+        });
+        main_s03_slide.slideNext();
     }
 
     var rnd_slide = new Swiper(".rnd_slide", {
@@ -80,10 +96,12 @@ window.addEventListener("DOMContentLoaded",function(){
         });
     });
 
-    document.querySelector(".page_arrow").addEventListener("click",function(e){
-        e.preventDefault();
-        window.scrollTo({top:document.querySelector(".s01").offsetTop, behavior:"smooth"})
-    });
+    if(url != "main"){
+        document.querySelector(".page_arrow").addEventListener("click",function(e){
+            e.preventDefault();
+            window.scrollTo({top:document.querySelector(".s01").offsetTop, behavior:"smooth"})
+        });
+    }
 });
 
 /* writeText는 local이나 https에서만 작동함, http에서는 작동안함 */
@@ -116,7 +134,7 @@ if (form) {
         input_privacy = document.querySelector(".input_privacy"),
         file_btn = document.querySelectorAll("input.file_btn"),
         file_name = document.querySelectorAll(".file_name"),
-        file_size = document.querySelectorAll(".file_size"),
+        division_button_wrap = document.querySelector(".division .button_wrap"),
         num = /[0-9]/,
         email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
@@ -127,23 +145,37 @@ if (form) {
         };
     }, true);
 
+    division_button_wrap.querySelectorAll(".button").forEach(function(el,index){
+        el.addEventListener("click",function(e){
+            e.preventDefault();
+            division_button_wrap.querySelector(".button.active").classList.remove("active");
+            el.classList.add("active");
+            division_button_wrap.querySelector("input").value = el.textContent;
+        });
+    });
     /* file */
     if (file_btn[0]) {
+        document.querySelectorAll(".file_wrap .btn").forEach(function(el,index){
+            el.addEventListener("click",function(e){
+                e.preventDefault();
+                el.nextElementSibling.nextElementSibling.click();
+            });
+        });
         file_btn.forEach((el, index) => {
             el.addEventListener("change", () => {
                 if (el.files[0] == undefined) return false;
                 file_name[index].textContent = el.files[0].name;
-                if (el.files[0].size >= 1024) {
-                    if (el.files[0].size >= (1024 * 1024 * 1024)) {
-                        alert("1000MB를 초과하였습니다.");
-                        file_name[index].textContent = "";
-                        el.value = "";
-                    } else {
-                        file_name[index].innerHTML += `<span class="file_size">${(el.files[0].size / (1024 * 1024)).toFixed(2)} MB</span>`;
-                    }
-                } else {
-                    file_name[index].innerHTML += `<span class="file_size">${(el.files[0].size / (1024 * 1024)).toFixed(10)} MB</span>`;
-                }
+                // if (el.files[0].size >= 1024) {
+                //     if (el.files[0].size >= (1024 * 1024 * 1024)) {
+                //         alert("1000MB를 초과하였습니다.");
+                //         file_name[index].textContent = "";
+                //         el.value = "";
+                //     } else {
+                //         file_name[index].innerHTML += `<span class="file_size">${(el.files[0].size / (1024 * 1024)).toFixed(2)} MB</span>`;
+                //     }
+                // } else {
+                //     file_name[index].innerHTML += `<span class="file_size">${(el.files[0].size / (1024 * 1024)).toFixed(10)} MB</span>`;
+                // }
             });
         });
     }
@@ -165,12 +197,12 @@ if (form) {
         return true;
     }
 
-    f_submit.addEventListener("click", () => {
-        if (!contactCheck(input_name)) {
-            alert("이름을 입력해주세요");
-            return false;
-        }
-        f_submit.disabled = false;
-        form.submit();
-    });
+    // f_submit.addEventListener("click", () => {
+    //     if (!contactCheck(input_name)) {
+    //         alert("이름을 입력해주세요");
+    //         return false;
+    //     }
+    //     f_submit.disabled = false;
+    //     form.submit();
+    // });
 }
