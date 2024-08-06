@@ -62,23 +62,23 @@ include_once "../include/header.html"
                         <div class="label_wrap">
                             <label>
                                 <p>업체명 <sup>*</sup></p>
-                                <input type="text">
+                                <input type="text" class="input_company">
                             </label>
                             <label>
                                 <p>제목 <sup>*</sup></p>
-                                <input type="text">
+                                <input type="text" class="input_title">
                             </label>
                             <label class="tel">
                                 <p>연락처 <sup>*</sup></p>
                                 <div>
-                                    <input type="tel">
-                                    <input type="tel">
-                                    <input type="tel">
+                                    <input type="tel" class="input_tel01">
+                                    <input type="tel" class="input_tel02">
+                                    <input type="tel" class="input_tel03">
                                 </div>
                             </label>
                             <label>
                                 <p>이메일 <sup>*</sup></p>
-                                <input type="text">
+                                <input type="text" class="input_email">
                             </label>
                             <label class="division">
                                 <p>구분 <sup>*</sup></p>
@@ -86,12 +86,12 @@ include_once "../include/header.html"
                                     <div class="button active">영업</div>
                                     <div class="button">기술지원</div>
                                     <div class="button">채용</div>
-                                    <input type="text">
+                                    <input type="text" class="input_division">
                                 </div>
                             </label>
                             <label>
                                 <p>내용</p>
-                                <textarea name="" id=""></textarea>
+                                <textarea name="" id="" class="textarea_detail"></textarea>
                             </label>
                             <label class="file">
                                 <p>첨부파일</p>
@@ -100,20 +100,20 @@ include_once "../include/header.html"
                                         첨부파일선택
                                     </div>
                                     <span class="file_name">선택된 파일 없음</span>
-                                    <input class="file_btn" type="file"></input>
+                                    <input class="file_btn input_file" type="file"></input>
                                 </div>
                             </label>
                             <label class="password">
                                 <p>비밀번호</p>
                                 <div>
-                                    <input type="password">
+                                    <input type="password" class="input_password">
                                     <div class="icon"></div>
                                 </div>
                             </label>
                             <label class="key">
                                 <p>인증키</p>
                                 <div>
-                                    <input type="password">
+                                    <input type="password" class="input_key">
                                 </div>
                             </label>
                         </div>
@@ -141,11 +141,11 @@ include_once "../include/header.html"
                                 <p>위의 개인정보처리방침에 동의하십니까?</p>
                                 <div class="check">
                                     <label>
-                                        <input type="radio" name="privacy">
+                                        <input type="radio" name="privacy" value="동의함" class="input_privacy">
                                         <p>동의함</p>
                                     </label>
                                     <label>
-                                        <input type="radio" name="privacy">
+                                        <input type="radio" name="privacy" value="동의함" class="input_privacy">
                                         <p>동의하지 않음</p>
                                     </label>
                                 </div>

@@ -7,12 +7,11 @@ header{
         @include inner-center($innerWidth);
         @include flex-space-start;
         .logo{
-            padding: 30px 0;
+            margin: 30px 0;
             width: 120px;
-            img{
-                width: 100%;
-                object-fit: contain;
-            }
+            aspect-ratio: 120/48;
+            @include bg-cover("../images/common/logo_white.svg");
+            @include transition(.5s);
         }
         #gnb{
             display: flex;
@@ -78,20 +77,21 @@ header{
             }
         }
         .menuicon{
-            width: 28px;
-            height: 14px;
+            width: 32px;
+            height: 18px;
             position: relative;
             cursor: pointer;
             display: none;
             span{
                 position: absolute;
                 width: 100%;
-                height: 2px;
-                background-color: #000;
+                height: 2.5px;
+                background-color: #fff;
                 transition: .3s;
                 left: 50%;
                 transform-origin: center;
                 transform: translateX(-50%);
+                border-radius: 2px;
                 &:nth-child(1){
                     top: 0px;
                 }
@@ -100,7 +100,7 @@ header{
                     transform: translate(-50%,-50%);
                 }
                 &:nth-child(3){
-                    top: 100%;
+                    top: calc(100% - 2px);
                 }
             }
             &.active{
@@ -120,6 +120,23 @@ header{
             }
         }
     }
+    // &.active{
+    //     background-color: #fff;
+    //     .header-wrap{
+    //         .logo{
+    //             aspect-ratio: 227/84;
+    //             background-image: url(../images/common/logo_black.svg);
+    //         }
+    //         #gnb{
+    //             color: #000;
+    //         }
+    //         .menuicon{
+    //             span{
+    //                 background-color: #000;
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 footer{
@@ -202,6 +219,61 @@ footer{
 }
 
 @media (max-width: 1024px){
+    header{
+        .header-wrap{
+            #gnb{
+                width: 100%;
+                height: calc(100% - $headerHeight);
+                position: fixed;
+                right: -100%;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                top: $headerHeight;
+                padding: 0 5%;
+                background-color: #fff;
+                color: #000;
+                @include transition(.5s);
+                >li{
+                    text-align: left;
+                    height: initial;
+                    margin-bottom: 30px;
+                    >a{
+                        padding: 0;
+                        min-width: initial;
+                        height: initial;
+                        margin-bottom: 20px;
+                        font-size: 30px;
+                        font-weight: 700;
+                    }
+                    .sub-menu{
+                        display: none;
+                        opacity: 1;
+                        pointer-events: visible;
+                        background-color: initial;
+                        padding: initial;
+                        border-radius: initial;
+                        @include pos-unset;
+                        font-size: 18px;
+                        @include transition(unset);
+                        li{
+                            margin-bottom: 10px;
+                        }
+                        &::before{
+                            display: none;
+                        }
+                    }
+                }
+                &.active{
+                    right: 0%;
+                }
+            }
+            .menuicon{
+                display: block;
+                margin-top: 30px;
+            }
+        }
+    }
     footer{
         padding: 60px 0 80px;
         .footer-wrap{
