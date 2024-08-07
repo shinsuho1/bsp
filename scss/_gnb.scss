@@ -120,23 +120,23 @@ header{
             }
         }
     }
-    // &.active{
-    //     background-color: #fff;
-    //     .header-wrap{
-    //         .logo{
-    //             aspect-ratio: 227/84;
-    //             background-image: url(../images/common/logo_black.svg);
-    //         }
-    //         #gnb{
-    //             color: #000;
-    //         }
-    //         .menuicon{
-    //             span{
-    //                 background-color: #000;
-    //             }
-    //         }
-    //     }
-    // }
+    &.active{
+        background-color: #fff;
+        .header-wrap{
+            .logo{
+                aspect-ratio: 227/84;
+                background-image: url(../images/common/logo_black.svg);
+            }
+            #gnb{
+                color: #000;
+            }
+            .menuicon{
+                span{
+                    background-color: #000;
+                }
+            }
+        }
+    }
 }
 
 footer{

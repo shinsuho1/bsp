@@ -178,7 +178,7 @@ window.addEventListener("DOMContentLoaded", function () {
                 const x = centerX + radiusX * Math.cos(el.angle);
                 const y = centerY + radiusY * Math.sin(el.angle);
                 drawCircle(ctx, x, y, 5, el.color);
-                el.angle += 0.01;
+                el.angle += 0.005;
             });
             requestAnimationFrame(animate);
         }

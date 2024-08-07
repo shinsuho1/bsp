@@ -737,7 +737,7 @@ main {
                                     border-radius: 100px;
                                     height: 100px;
                                     overflow: hidden;
-
+                                    border: 1px solid #E5E5E5;
                                     img {
                                         width: 100%;
                                         object-fit: contain;
@@ -766,6 +766,15 @@ main {
 
                     &.s01 {
                         padding: 100px 0 140px;
+                        .top{
+                            .img-wrap{
+                                img{
+                                    position: fixed;
+                                    max-width: 728px;
+                                    top: 50%;
+                                }
+                            }
+                        }
                     }
 
                     &.s02 {
