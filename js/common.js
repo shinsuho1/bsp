@@ -8,8 +8,6 @@ let html = document.querySelector("html"),
     menuicon = document.querySelector(".menuicon");
 
 window.addEventListener("DOMContentLoaded", function () {
-    let scrollY = window.scrollY,
-        lastScroll = 0;
     $(".menuicon").on("click", function () {
         $(this).toggleClass("active");
         $("#gnb").toggleClass("active");
@@ -48,20 +46,19 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
     window.addEventListener("scroll", () => {
-        if(window.scrollY >= document.querySelector(".s01").offsetTop){
-            header.classList.add("active")
+        if(!document.querySelector(".sub_main")){
+            if(window.scrollY >= document.querySelector(".s02").offsetTop){
+                header.classList.add("active")
+            }else{
+                header.classList.remove("active");
+            } 
         }else{
-            header.classList.remove("active");
+            if(window.scrollY >= document.querySelector(".s01").offsetTop){
+                header.classList.add("active")
+            }else{
+                header.classList.remove("active");
+            }    
         }
-        // scrollY = window.scrollY;
-        // if (window.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
-        // let scrollTop = window.scrollY;
-        // if (scrollTop > lastScroll) {
-        //     header.classList.remove("active");
-        // } else {
-        //     header.classList.add("active");
-        // }
-        // lastScroll = scrollTop;
     });
 
     if (url == "main") {

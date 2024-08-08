@@ -9,7 +9,7 @@ header{
         .logo{
             margin: 30px 0;
             width: 120px;
-            aspect-ratio: 120/48;
+            aspect-ratio: 65/24;
             @include bg-cover("../images/common/logo_white.svg");
             @include transition(.5s);
         }
@@ -124,11 +124,18 @@ header{
         background-color: #fff;
         .header-wrap{
             .logo{
-                aspect-ratio: 227/84;
-                background-image: url(../images/common/logo_black.svg);
+                background-image: url(../images/common/logo_black_header.svg);
             }
             #gnb{
                 color: #000;
+                >li{
+                    .sub-menu{
+                        background-color: #fff;
+                    }
+                    &.hover{
+                        background-color: #Fff;
+                    }
+                }
             }
             .menuicon{
                 span{
@@ -231,7 +238,7 @@ footer{
                 justify-content: flex-start;
                 top: $headerHeight;
                 padding: 0 5%;
-                background-color: #fff;
+                background-color: #000;
                 color: #000;
                 @include transition(.5s);
                 >li{
