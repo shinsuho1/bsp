@@ -75,7 +75,7 @@
     
                                         span {
                                             font-size: 18px;
-                                            bottom: -80px;
+                                            bottom: -10px;
                                             &:before {
                                                 top: -20px;
                                                 width: 6px;
@@ -84,12 +84,16 @@
     
                                         }
                                     }
-                                    &:hover {
+                                    &:hover ,&.hover{
                                         width: 200%;
     
                                         p {
                                             font-size: 38px;
                                             padding-bottom: 120px;
+                                        }
+
+                                        span{
+                                            bottom: -10px;
                                         }
                                     }
                                 }
@@ -252,7 +256,7 @@
                     }
 
                     ul {
-                        bottom: -35px;
+                        // bottom: -35px;
                     }
                 }
             }
@@ -318,6 +322,25 @@
 
                         &.s01 {
                             padding: 80px 0 120px;
+                            article{
+                                .wrap{
+                                    .top{
+                                        .img-wrap{
+                                            img{
+                                                // right: 5%;
+                                            }
+                                        }
+                                    }
+                                    .bottom{
+                                        .img-wrap{
+                                            img{
+                                                // left: 5%;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
                         }
 
                         &.s02 {
@@ -355,6 +378,10 @@
 
                         &.s03 {
                             padding: 160px 0 120px;
+                            .tit{
+                                font-size: 20px;
+                                margin-bottom: 40px;
+                            }
                         }
 
                         &.s04 {
@@ -559,6 +586,28 @@
     
                                         }
 
+                                        .info04{
+                                            margin-top: 50px;
+                                            ul{
+                                                @include flex-list;
+                                                gap: 0 15px;
+                                                li{
+                                                    margin-bottom: 50px;
+                                                    p{
+                                                        font-size: 18px;
+                                                        margin-bottom: 15px;
+                                                    }
+                                                    .img_wrap{
+                                                        @include flex-el-list(3,15px,15px);
+                                                        div{
+                                                            min-width: 300px;
+                                                            max-width: 300px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+
                                         .text {
                                             h2 {
                                                 font-size: 18px;
@@ -608,7 +657,8 @@
                                                         gap: 10px;
 
                                                         .icon {
-                                                            width: 20px;
+                                                            width: 20px; height: 20px;
+                                                            min-width: 20px; min-height: 20px;
                                                         }
                                                     }
                                                 }
@@ -1485,6 +1535,54 @@
                                             }
     
                                         }
+                                        .info04{
+                                            margin-top: 40px;
+                                            ul{
+                                                gap: 0 10px;
+                                                li{
+                                                    margin-bottom: 40px;
+                                                    p{
+                                                        font-size: 16px;
+                                                        margin-bottom: 10px;
+                                                    }
+                                                    .img_wrap{
+                                                        @include flex-el-list(3,10px,10px);
+                                                        div{
+                                                            min-width: 260px;
+                                                            max-width: 260px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:1130px){
+    main{
+        &#sub_page{
+            &.about{
+                &.bsp{
+                    section{
+                        &.s04 {
+                            article {
+                                .wrap {
+                                    ul {
+                                        li {
+                                            .text {
+                                                span{
+                                                    min-height: 102px;
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -1567,7 +1665,7 @@
     
                                         }
                                     }
-                                    &:hover {
+                                    &:hover,&.hover {
                                         width: calc(100% / 2);
     
                                         p {
@@ -1717,7 +1815,7 @@
                     }
 
                     ul {
-                        bottom: -30px;
+                        bottom: -35px;
                     }
                 }
             }
@@ -1821,6 +1919,10 @@
 
                         &.s03 {
                             padding: 120px 0 80px;
+                            .tit{
+                                font-size: 18px;
+                                margin-bottom: 30px;
+                            }
                         }
 
                         &.s04 {
@@ -1853,6 +1955,10 @@
                                                 strong,
                                                 span {
                                                     font-size: 14px;
+                                                }
+
+                                                span{
+                                                    min-height: initial;
                                                 }
 
                                                 strong {
@@ -2061,7 +2167,8 @@
                                                         font-size: 13px;
 
                                                         .icon {
-                                                            width: 18px;
+                                                            width: 18px; height: 18px;
+                                                            min-width: 18px; min-height: 18px;
                                                         }
                                                     }
                                                 }
@@ -2156,8 +2263,7 @@
 
             .category_wrap {
                 top: -40px;
-                right: 0;
-                left: initial;
+                left: 0;
                 max-width: 300px;
                 border: 1px solid #d5d5d5;
                 border-bottom: none;
@@ -2796,6 +2902,18 @@
                                         }
                                     }
                                 }
+                                .swiper-pagination{
+                                    bottom: 50px;
+                                    .swiper-pagination-bullet{
+                                        width: 10px;
+                                        height: 10px;
+                                        &.swiper-pagination-bullet-active{
+                                            width: 20px;
+                                            height: 20px;
+    
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -2822,7 +2940,7 @@
     
                                         }
                                     }
-                                    &:hover {
+                                    &:hover ,&.hover{
                                         p {
                                             font-size: 26px;
                                             padding-bottom: 60px;
@@ -3069,6 +3187,9 @@
 
                         &.s03 {
                             padding: 100px 0 60px;
+                            .tit{
+                                margin-bottom: 20px;
+                            }
                         }
 
                         &.s04 {
@@ -3119,7 +3240,7 @@
                                     .info {
                                         gap: 40px;
                                         flex-direction: column;
-
+                                        position: relative;
                                         .left {
                                             width: 100%;
 
@@ -3140,8 +3261,19 @@
 
                                                 .history_box {
                                                     width: 100%;
-                                                    margin-bottom: 25px;
-
+                                                    margin-bottom: 35px;
+                                                    // margin-top: 150px;
+                                                    .img-wrap{
+                                                        display: block;
+                                                        width: 80%;
+                                                        height: 120px;
+                                                        margin-bottom: 20px;
+                                                        border-radius: 10px;
+                                                        overflow: hidden;
+                                                        img{
+                                                            @include img-cover;
+                                                        }
+                                                    }
                                                     .title {
                                                         font-size: 18px;
                                                         margin-bottom: 15px;
@@ -3150,31 +3282,15 @@
                                                     ul>li>ul {
                                                         margin-bottom: 15px;
                                                     }
-
+                                                    // &:nth-of-type(1){
+                                                    //     margin-top: 140px;
+                                                    // }
                                                 }
                                             }
                                         }
 
                                         .img_ul {
-                                            @include flex-center;
-                                            gap: 5px;
-
-                                            li {
-                                                width: 100%;
-                                                border-radius: 10px;
-
-                                                &:nth-of-type(2) {
-                                                    width: 100%;
-                                                    margin-top: 0px;
-                                                    margin-left: 0px;
-                                                }
-
-                                                &:nth-of-type(3) {
-                                                    width: 100%;
-                                                    margin-top: 0px;
-                                                    margin-left: 00px;
-                                                }
-                                            }
+                                            display: none;
                                         }
                                     }
                                 }
@@ -3260,6 +3376,28 @@
                                             }
     
                                         }
+                                        .info04{
+                                            margin-top: 30px;
+                                            ul{
+                                                // gap: 0 10px;
+                                                flex-direction: column;
+                                                li{
+                                                    width: 100%;
+                                                    margin-bottom: 30px;
+                                                    p{
+                                                        // font-size: 16px;
+                                                    }
+                                                    .img_wrap{
+                                                        // @include flex-el-list(3,10px,10px);
+                                                        div{
+                                                            min-width: initial;
+                                                            max-width: initial;
+                                                            border-radius: 5px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
 
                                     .list {
@@ -3285,7 +3423,8 @@
                                                         font-size: 12px;
 
                                                         .icon {
-                                                            width: 14px;
+                                                            width: 14px; height: 14px;
+                                                            min-width: 14px; min-height: 14px;
                                                         }
                                                     }
                                                 }
@@ -3387,6 +3526,8 @@
 
             .category_wrap {
                 top: -38px;
+                left: 50%;
+                transform: translateX(-50%);
                 max-width: 300px;
 
                 span {
@@ -3748,11 +3889,11 @@
 
                                         .privacy_wrap {
                                             padding-top: 15px;
-
                                             .privacy {
                                                 height: 180px;
                                                 margin-bottom: 10px;
                                                 padding: 15px;
+                                                font-size: 13px;
                                             }
 
                                             >div {
@@ -4059,7 +4200,7 @@
 
                                                     svg {
                                                         height: 50px;
-
+                                                        transform: translate(-50%, -50%) rotate(-90deg);
                                                         .bar {
                                                             stroke: #2852E5;
                                                             stroke-width: 5px;
@@ -4231,6 +4372,14 @@
                             .swiper {
                                 .swiper-wrapper {
                                     .swiper-slide {
+                                        .bg{
+                                            img{
+                                                display: none;
+                                                &.mo{
+                                                    display: block;
+                                                }
+                                            }
+                                        }
                                         .title {
                                             h2{
                                                 // text-align: center;
@@ -4263,7 +4412,7 @@
     
                                         }
                                     }
-                                    &:hover {
+                                    &:hover,&.hover {
                                         width: 100%;
                                         height: 200px;
                                         p {
@@ -4324,7 +4473,6 @@
                     }
 
                     ul {
-                        bottom: -25px;
                         font-size: 12px;
                     }
                 }
@@ -4460,6 +4608,11 @@
 
                                                 .history_box {
                                                     margin-bottom: 20px;
+                                                    .img-wrap{
+                                                        width: 100%;
+                                                        height: 100px;
+                                                        margin-bottom: 15px;
+                                                    }
 
                                                 }
                                             }
@@ -4523,7 +4676,8 @@
                                             .img-wrap {
                                                 width: 100%;
                                                 min-width: initial;
-                                                max-width: 300px;
+                                                max-width: 100%;
+                                                max-height: 250px;
                                             }
                                         }
                                         .info02{
@@ -4548,6 +4702,25 @@
                                                 }
                                             }
     
+                                        }
+                                        .info04{
+                                            margin-top: 25px;
+                                            ul{
+                                                li{
+                                                    width: 100%;
+                                                    margin-bottom: 25px;
+                                                    p{
+                                                        font-size: 14px;
+                                                    }
+                                                    .img_wrap{
+                                                        @include flex-el-list(2,10px,10px);
+                                                        div{
+                                                            min-width: initial;
+                                                            max-width: initial;
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }

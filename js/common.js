@@ -7,15 +7,20 @@ let html = document.querySelector("html"),
     footer = document.querySelector("footer"),
     menuicon = document.querySelector(".menuicon");
 
+let s02_hover = true;
 window.addEventListener("DOMContentLoaded", function () {
+
+    let scrollY = window.scrollY,
+    lastScroll = 0;
     $(".menuicon").on("click", function () {
         $(this).toggleClass("active");
-        $("#gnb").toggleClass("active");
+        $("header").toggleClass("on");
     });
 
     $("#gnb>li>a").off("click").click(function (e) {
         if (window.innerWidth <= 1024 && ($(this).siblings(".sub-menu").length > 0)) {
             e.preventDefault();
+            $(this).toggleClass("active");
             $(".sub-menu").stop().slideUp();
             $(this).siblings(".sub-menu").stop().slideToggle();
         }
@@ -45,20 +50,27 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    if(window.scrollY > 0){
+        header.classList.add("active");
+    }else{
+        header.classList.remove("active");
+    }
     window.addEventListener("scroll", () => {
-        if(!document.querySelector(".sub_main")){
-            if(window.scrollY >= document.querySelector(".s02").offsetTop){
-                header.classList.add("active")
-            }else{
-                header.classList.remove("active");
-            } 
+        scrollY = window.scrollY;
+        if(scrollY > 0){
+            header.classList.add("active");
         }else{
-            if(window.scrollY >= document.querySelector(".s01").offsetTop){
-                header.classList.add("active")
-            }else{
-                header.classList.remove("active");
-            }    
+            header.classList.remove("active");
         }
+        if (window.innerWidth <= 1024 && header_gnb.classList.contains("active")) return false;
+        let scrollTop = window.scrollY;
+        if (scrollTop > lastScroll) {
+            header.classList.remove("scroll");
+        } else {
+            header.classList.add("scroll");
+        }
+        lastScroll = scrollTop;
     });
 
     if (url == "main") {
@@ -67,43 +79,47 @@ window.addEventListener("DOMContentLoaded", function () {
             loop: true,
             autoplay: {
                 delay: 6000,
-                disableOnInteraction : false,
+                disableOnInteraction: false,
             },
             speed: 1000,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
         });
-        function remove_class(){
+
+
+        document.querySelectorAll(".s02 .wrap>ul>li").forEach(function (el, index) {
+            el.addEventListener("mouseenter", function () {
+                if (s02_hover == false) {
+                    return false;
+                }
+
+                document.querySelectorAll(".s02 .wrap>ul>li")[0].classList.remove("hover");
+            });
+        });
+        function remove_class() {
             $(".img_slide").removeClass("type01");
             $(".img_slide").removeClass("type02");
             $(".img_slide").removeClass("type03");
         }
-        var moblie_img_slide = new Swiper(".moblie_img_slide",{
+        var moblie_img_slide = new Swiper(".moblie_img_slide", {
             loop: true,
             speed: 1000,
-            slidesPerView: 1,
+            slidesPerView: "auto",
             watchSlidesProgress: true,
             spaceBetween: 20,
-            // thumbs: {
-            //     swiper: s03_text_slide,
-            // },
         });
 
         var s03_text_slide = new Swiper("#main_page .s03 .text_slide", {
             direction: "vertical",
-            // autoplay: {
-            //     delay: 1000,
-            disableOnInteraction : false,
-            // },
-            loop:true,
+            loop: true,
             speed: 1000,
             slidesPerView: "auto",
-            // autoHeight: true,
             centeredSlides: true,
             navigation: {
                 nextEl: ".text_slide_wrap .next",
                 prevEl: ".text_slide_wrap .prev",
-            },
-            thumbs: {
-                swiper: moblie_img_slide,
             },
             on: {
                 slideChange: function (el) {
@@ -111,17 +127,22 @@ window.addEventListener("DOMContentLoaded", function () {
                     $(".img_slide").addClass(`type0${this.realIndex}`);
                 }
             },
-            breakpoints:{
-                541:{
+            breakpoints: {
+                541: {
+
                     direction: "vertical",
                     effect: "slide",
                 },
-                0:{
+                0: {
                     direction: "horizontal",
                     effect: "fade",
                 }
             }
         });
+
+
+        moblie_img_slide.controller.control = s03_text_slide;
+        s03_text_slide.controller.control = moblie_img_slide;
 
 
         const canvas_ = document.querySelector("canvas");
@@ -142,21 +163,21 @@ window.addEventListener("DOMContentLoaded", function () {
         }
 
         const circles = [{
-                color: '#DEDEDE',
-                angle: 1.3
-            },
-            {
-                color: '#DEDEDE',
-                angle: 3
-            },
-            {
-                color: '#DEDEDE',
-                angle: 4.5
-            },
-            {
-                color: '#DEDEDE',
-                angle: 6
-            },
+            color: '#DEDEDE',
+            angle: 1.3
+        },
+        {
+            color: '#DEDEDE',
+            angle: 3
+        },
+        {
+            color: '#DEDEDE',
+            angle: 4.5
+        },
+        {
+            color: '#DEDEDE',
+            angle: 6
+        },
         ];
 
         function animate() {
@@ -171,7 +192,7 @@ window.addEventListener("DOMContentLoaded", function () {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
             drawEllipse(ctx, centerX, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI, false);
 
-            circles.forEach(function(el, index) {
+            circles.forEach(function (el, index) {
                 const x = centerX + radiusX * Math.cos(el.angle);
                 const y = centerY + radiusY * Math.sin(el.angle);
                 drawCircle(ctx, x, y, 5, el.color);
@@ -182,33 +203,33 @@ window.addEventListener("DOMContentLoaded", function () {
 
         animate();
 
-        if(window.innerWidth <= 1460){
+        if (window.innerWidth <= 1460) {
             canvas_.width = 500;
             canvas_.height = 500;
         }
-        if(window.innerWidth <= 1024){
+        if (window.innerWidth <= 1024) {
             canvas_.width = 400;
             canvas_.height = 400;
         }
-        if(window.innerWidth <= 767){
+        if (window.innerWidth <= 767) {
             canvas_.width = 300;
             canvas_.height = 300;
         }
 
-        window.addEventListener("resize",function(){
-            if(window.innerWidth > 1460){
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 1460) {
                 canvas_.width = 600;
                 canvas_.height = 600;
             }
-            if(window.innerWidth <= 1460){
+            if (window.innerWidth <= 1460) {
                 canvas_.width = 500;
                 canvas_.height = 500;
             }
-            if(window.innerWidth <= 1024){
+            if (window.innerWidth <= 1024) {
                 canvas_.width = 400;
                 canvas_.height = 400;
             }
-            if(window.innerWidth <= 767){
+            if (window.innerWidth <= 767) {
                 canvas_.width = 300;
                 canvas_.height = 300;
             }
@@ -222,7 +243,7 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    if(document.querySelector(".rnd_slide")){
+    if (document.querySelector(".rnd_slide")) {
         var rnd_slide = new Swiper(".rnd_slide", {
             slidesPerView: "auto",
             spaceBetween: 20,
@@ -232,6 +253,15 @@ window.addEventListener("DOMContentLoaded", function () {
                 rnd_slide.slideNext();
             });
         });
+    }
+
+    if (url == "products" && document.querySelector(".list_page")) {
+        let list = document.querySelectorAll(".s01 .list li"),
+            bg = document.querySelector(".wrap .bg");
+        console.log(list.length)
+        if (list.length == 1 || list.length == 4) {
+            bg.classList.add("active");
+        }
     }
 
 
@@ -282,6 +312,7 @@ window.addEventListener("DOMContentLoaded", function () {
         });
 
     }
+
 });
 
 /* ================================ contact ================================ */
@@ -317,7 +348,7 @@ if (form) {
             division_button_wrap.querySelector("input").value = el.textContent;
         });
     });
-    
+
     /* file */
     if (file_btn[0]) {
         document.querySelectorAll(".file_wrap .btn").forEach(function (el, index) {
@@ -350,11 +381,11 @@ if (form) {
         if (el == input_email && !email.test(input_email.value.trim())) {
             el.focus();
             return false;
-        } 
+        }
         else if (el == input_privacy && !el.checked) {
             el.focus();
             return false;
-        } 
+        }
         else if (!el.value.trim().length > 0 || el.value.trim().length == 0) {
             el.focus();
             return false;
@@ -367,7 +398,7 @@ if (form) {
             alert("업체명을 입력해 주세요.");
             return false;
         }
-        if(!contactCheck(input_title)){
+        if (!contactCheck(input_title)) {
             alert("제목을 입력해 주세요.");
             return false;
         }
@@ -375,22 +406,93 @@ if (form) {
         tel += input_tel01.value;
         tel += input_tel02.value;
         tel += input_tel03.value;
-        if(!num.test(tel.trim())){
+        if (!num.test(tel.trim())) {
             input_tel01.focus();
             alert("연락처를 입력해 주세요");
             return false;
         }
-        if(!contactCheck(input_email)){
+        if (!contactCheck(input_email)) {
             alert("이메일을 입력해 주세요.");
             return false;
         }
 
-        if(!contactCheck(input_privacy)){
+        if (!contactCheck(input_privacy)) {
             alert("개인정보 처리방침에 동의해 주세요.");
-            return false;        
+            return false;
         }
 
         f_submit.disabled = false;
         form.submit();
     });
 }
+
+
+/* gsap */
+gsap.registerPlugin(ScrollTrigger);
+
+ScrollTrigger.matchMedia({
+    "(min-width:1461)": function () {
+        gsap.to(".bsp .s01 .top .img-wrap img", {
+            scrollTrigger: {
+                // trigger: '.s01',
+                scrub: .4,
+            },
+            y: 50
+        })
+        gsap.to(".bsp .s01 .bottom .img-wrap img", {
+            scrollTrigger: {
+                // trigger: '.s01',
+                scrub: .4,
+            },
+            y: 50
+        })
+        gsap.to(".bsp .s03 .top .img-wrap img", {
+            scrollTrigger: {
+                trigger: '.s03',
+                scrub: .4,
+            },
+            y: 150
+        })
+        gsap.to(".bsp .s03 .bottom .img-wrap img", {
+            scrollTrigger: {
+                trigger: '.s03',
+                scrub: .4,
+            },
+            y: 200
+        });
+    },
+    "(max-width:1024px)": function () {
+        gsap.to(".bsp .s01 .top .img-wrap img", {
+            scrollTrigger: {
+                // trigger: '.s01',
+                scrub: .4,
+            },
+            y: 50
+        })
+        gsap.to(".bsp .s01 .bottom .img-wrap img", {
+            scrollTrigger: {
+                // trigger: '.s01',
+                scrub: .4,
+            },
+            y: 50
+        })
+        gsap.to(".bsp .s03 .top .img-wrap img", {
+            scrollTrigger: {
+                trigger: '.s03',
+                scrub: .4,
+            },
+            y: 100
+        })
+        gsap.to(".bsp .s03 .bottom .img-wrap img", {
+            scrollTrigger: {
+                trigger: '.s03',
+                scrub: .4,
+            },
+            y: 100
+        });
+    },
+
+})
+
+window.addEventListener("resize", ScrollTrigger.update);
+
